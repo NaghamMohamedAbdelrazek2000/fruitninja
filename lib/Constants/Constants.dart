@@ -1,0 +1,25 @@
+import 'package:flutter/material.dart';
+const int splashtime = 5;
+const greencolor= Color.fromRGBO(
+13, 160, 95, 1.0);
+const blackcolor=Colors.black;
+final  emailcontroller = TextEditingController();
+final  passwordcontroller=TextEditingController();
+final  emailcontroller1 = TextEditingController();
+final passwordcontroller1=TextEditingController();
+final  namecontroller=TextEditingController();
+ String? state;
+final  name2controller=TextEditingController();
+final  email2controller=TextEditingController();
+final   phonenumbercontroller=TextEditingController();
+final pinTextEditingController = TextEditingController();
+final passwordcontroller2=TextEditingController();
+final passwordcontroller3=TextEditingController();
+final HomeEditingController = TextEditingController();
+final chatdetailsController = TextEditingController();
+final finishorderController = TextEditingController();
+final ratefoodController = TextEditingController();
+final raterestaurantController = TextEditingController();
+final menuControllerr = TextEditingController();
+final restaurantControllerr = TextEditingController();
+final HomeControllerr = TextEditingController();

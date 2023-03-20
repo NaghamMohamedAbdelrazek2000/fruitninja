@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">fruitninja</string>
+    <string name="facebook_app_id">1900465006986375</string>
+    <string name="fb_login_protocol_scheme">fb28a883446ec1f3bdfdeb029533623318</string>
+</resources>
