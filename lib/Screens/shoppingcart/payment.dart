@@ -8,9 +8,11 @@ import 'package:foodninja/Screens/shoppingcart/editpayments.dart';
 import 'package:foodninja/components/appbar/appbar.dart';
 import 'package:get/get.dart';
 
-class payment extends StatelessWidget {
-  const payment({Key? key}) : super(key: key);
+import '../Home/Exploremenuwithfilter/ExploremenuwithfilterController.dart';
 
+class payment extends StatelessWidget {
+   payment({Key? key}) : super(key: key);
+   Exploremenuwithfiltercontroller cartcontrollerr =Get.put(Exploremenuwithfiltercontroller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,10 +148,10 @@ class payment extends StatelessWidget {
                               )
 
                               ),
-                              SizedBox(width: 160.w,),
-                              Text('120 \$', style: TextStyle(
+                              SizedBox(width: 150.w,),
+                              Obx(() =>   Text('${cartcontrollerr.totalprice.toStringAsFixed(2)} \$', style: TextStyle(
                                 fontWeight: FontWeight.bold, color: Colors.white,fontSize: 15.sp,
-                              ),),
+                              ),),),
                             ],
                           ),
                           SizedBox(height: 10.h,),
@@ -160,10 +162,10 @@ class payment extends StatelessWidget {
                               )
 
                               ),
-                              SizedBox(width: 130.w,),
-                              Text('10 \$', style: TextStyle(
+                              SizedBox(width: 110.w,),
+                              Obx(() => Text('${cartcontrollerr.ShippingFee()}      \$', style: TextStyle(
                                 fontWeight: FontWeight.bold, color: Colors.white,fontSize: 15.sp,
-                              ),),
+                              ),),)
                             ],
                           ),
                           SizedBox(height: 10.h,),
@@ -174,10 +176,10 @@ class payment extends StatelessWidget {
                               )
 
                               ),
-                              SizedBox(width: 175.w,),
-                              Text('20 \$', style: TextStyle(
+                              SizedBox(width: 156.w,),
+                              Obx(() => Text('${cartcontrollerr.Discount().toStringAsFixed(2)} \$', style: TextStyle(
                                 fontWeight: FontWeight.bold, color: Colors.white,fontSize: 15.sp,
-                              ),),
+                              ),),)
                             ],
                           ),
                           Divider(color: Colors.white,),
@@ -188,10 +190,10 @@ class payment extends StatelessWidget {
                               )
 
                               ),
-                              SizedBox(width: 190.w,),
-                              Text('150 \$', style: TextStyle(
+                              SizedBox(width: 184.w,),
+                              Obx(() =>  Text('${cartcontrollerr.total().toStringAsFixed(2)} \$', style: TextStyle(
                                 fontWeight: FontWeight.bold, color: Colors.white,fontSize: 15.sp,
-                              ),),
+                              ),),)
                             ],
                           ),
                           SizedBox(height: 10.h,),
@@ -199,7 +201,7 @@ class payment extends StatelessWidget {
                             width: double.infinity,
                             margin: EdgeInsets.symmetric(horizontal: 40.w),
                             child: MaterialButton(
-                              onPressed:(){Get.to(YourOrder());},
+                              onPressed:(){Get.to( editpayments());},
                               child: Text('Place My Order',
                                 style: TextStyle(color: greencolor,
                                   fontSize: 15.sp,),),),

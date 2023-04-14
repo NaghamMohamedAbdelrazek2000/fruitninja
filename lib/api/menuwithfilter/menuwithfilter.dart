@@ -2,10 +2,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import '../../model/menu/menumodel.dart';
-
-
 class menuwithfilter {
   List<menumodel> item = [] ;
   loadProductsFromApi() async {

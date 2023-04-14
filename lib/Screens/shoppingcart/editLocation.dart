@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodninja/Constants/Constants.dart';
 import 'package:foodninja/Screens/shoppingcart/editpayments.dart';
+import 'package:foodninja/Screens/shoppingcart/trackorderwithmap.dart';
 import 'package:foodninja/components/appbar/appbar.dart';
 import 'package:get/get.dart';
+
+import 'SetLocationOnMap.dart';
+import 'YourOrder.dart';
 
 class editLocation extends StatelessWidget {
   const editLocation({Key? key}) : super(key: key);
@@ -106,12 +110,27 @@ class editLocation extends StatelessWidget {
                               fontWeight: FontWeight.bold, color: greencolor,
                             ),),),
                           ),
+
                         ],
                       ),
                     ),
                   ),
                 ],
 
+              ),
+              SizedBox(height:60.h,),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 40.w),
+                child: MaterialButton(
+                  onPressed:(){Get.to(SetLocationOnMap());},
+                  child: Text('Next',
+                    style: TextStyle(color: Colors.white,
+                      fontSize: 15.sp,),),),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: greencolor,
+                ),
               ),
 
             ],

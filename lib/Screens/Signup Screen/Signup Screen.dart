@@ -34,6 +34,9 @@ class SignupScreen extends StatelessWidget {
                         text:'Name',
                         icon: Icon(Icons.person, color: greencolor,),
                         textinputtype: TextInputType.text,
+                        onChanged: (v){
+                          print(v);
+                        },
                         obscureText: false,
                         validator:(value){
                           if(value==null || value.isEmpty) {
@@ -45,6 +48,9 @@ class SignupScreen extends StatelessWidget {
                         text:'Email Address',
                         icon: Icon(Icons.email, color: greencolor,),
                         textinputtype: TextInputType.text,
+                        onChanged: (v){
+                          print(v);
+                        },
                         obscureText: false,
                         validator:(value){
                           if(value==null || value.isEmpty) {
@@ -54,6 +60,9 @@ class SignupScreen extends StatelessWidget {
                       SizedBox(height: 7.h,),
                       TextformField(controller:  passwordcontroller1,
                         text:'Password',
+                        onChanged: (v){
+                          print(v);
+                        },
                         icon: Icon(Icons.lock, color: greencolor),
                         textinputtype: TextInputType.visiblePassword,
                         obscureText: true,
@@ -67,29 +76,30 @@ class SignupScreen extends StatelessWidget {
                   ),
 
                 ),
-               GetBuilder<registercontroller>
-                 (
-                 init: registercontroller(),
-                 builder: (controllerr)=>
-                   RadioListTile( activeColor: greencolor,
-                     title: Text("Keep Me Signed In"),
-                     value: "keep Me Signed In",
-                     groupValue: state,
-                     onChanged: (value) {
-                       controllerr.change(value);
-                     },
-                   ),) ,
-            GetBuilder<registercontroller>
-              (
-              builder: (controllerr)=>RadioListTile(
-                  activeColor: greencolor,
-                  title: Text("Email Me About Special Pricing"),
-                  value: "email Me About Special Pricing",
-                  groupValue: state,
-                  onChanged: (value) {
-                    controller.change(value);
-                  },
-                ),),
+                GetBuilder<registercontroller>
+                  (
+                  init: registercontroller(),
+                  builder: (controllerr)=>
+                      RadioListTile( activeColor: greencolor,
+                        title: Text("Keep Me Signed In"),
+                        value: "keep Me Signed In",
+                        groupValue: state,
+                        onChanged: (value) {
+                          controllerr.change(value);
+
+                        },
+                      ),) ,
+                GetBuilder<registercontroller>
+                  (
+                  builder: (controllerr)=>RadioListTile(
+                    activeColor: greencolor,
+                    title: Text("Email Me About Special Pricing"),
+                    value: "email Me About Special Pricing",
+                    groupValue: state,
+                    onChanged: (value) {
+                      controller.change(value);
+                    },
+                  ),),
                 SizedBox(height: 10.h,),
                 ExtractedButton(onpressed: ()async{
                   var formdata=formkey1.currentState!;

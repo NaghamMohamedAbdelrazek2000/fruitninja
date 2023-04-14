@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodninja/Constants/Constants.dart';
 import 'package:foodninja/Screens/shoppingcart/Notification.dart';
+import 'package:foodninja/Screens/shoppingcart/payment.dart';
 import 'package:foodninja/components/Button/button.dart';
 import 'package:foodninja/components/appbar/appbar.dart';
 import 'package:get/get.dart';
@@ -110,7 +111,7 @@ class VoucherPromo extends StatelessWidget {
                     ),
                   ),],),
               SizedBox(height: 110.h,),
-              ExtractedButton(onpressed: () {Get.to(notification());}, text: 'Check out',)
+              ExtractedButton(onpressed: () {Get.to(payment());}, text: 'Check out',)
             ],
           ),
         ),

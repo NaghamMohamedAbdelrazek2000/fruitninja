@@ -7,8 +7,14 @@ import 'package:foodninja/components/Textformfield/TextFormField.dart';
 import 'package:foodninja/components/appbar/appbar.dart';
 import 'package:get/get.dart';
 class Signupprofile extends StatelessWidget {
-  Signupprofile({Key? key}) : super(key: key);
+  Signupprofile({Key? key,required this.name,required this.email,required this.password,required this.mobile}) : super(key: key);
   final formkey2 =GlobalKey<FormState>();
+
+
+  String  name='';
+  String  password='';
+  String email='';
+  String mobile='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +47,7 @@ class Signupprofile extends StatelessWidget {
                 }, ),
               SizedBox(height: 15.h,),
               TextformField(controller: email2controller,
-                text:'Email',
+                text:'Email  $email',
                 icon: Icon(Icons.email, color: greencolor,),
                 textinputtype: TextInputType.text,
                 obscureText: false,
@@ -52,7 +58,7 @@ class Signupprofile extends StatelessWidget {
                 }, ),
               SizedBox(height: 15.h,),
               TextformField(controller: phonenumbercontroller,
-                text:'Phone Number',
+                text:'Phone Number $name  ',
                 icon: Icon(Icons.phone_android_outlined, color: greencolor),
                 textinputtype: TextInputType.number,
                 obscureText: true,

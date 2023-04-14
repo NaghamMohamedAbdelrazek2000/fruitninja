@@ -5,7 +5,7 @@ import 'dart:convert';
 import '../../model/menu/menumodel.dart';
 class Restaurantwithfilter {
   List<menumodel> item = [] ;
-  loadProductsFromApi2() async {
+  loadProductsFromApi2()async{
     try{
     var url = "https://fakestoreapi.com/products";
     var response = await http.get(Uri.parse(url));
@@ -18,14 +18,8 @@ class Restaurantwithfilter {
         print(item.length);
       }
       return item;
-    }
-  }
-
+    }}
   catch(e){
       print(e);
   } return item;
-
-  }
-
-
-}
+  }}

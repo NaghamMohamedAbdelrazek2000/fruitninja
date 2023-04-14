@@ -7,6 +7,8 @@ import 'package:foodninja/components/Button/button.dart';
 import 'package:foodninja/components/Textformfield/TextFormField.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+
+import '../BottomNavigationBar/BottomNavigationBar.dart';
 class RateRestaurant extends StatelessWidget {
   const RateRestaurant({Key? key}) : super(key: key);
 
@@ -43,7 +45,7 @@ class RateRestaurant extends StatelessWidget {
                         margin: EdgeInsets.symmetric(horizontal: 50.w),
                         width: 150.w,
                         child: MaterialButton(
-                          onPressed:(){Get.offAll(VoucherPromo());},
+                          onPressed:(){Get.to(nav());},
                           child: Text('Submit',
                             style: TextStyle(color: Colors.white,
                               fontSize: 20.sp,),),),
@@ -53,7 +55,7 @@ class RateRestaurant extends StatelessWidget {
                         ),
                       ),
                     ),
-                    InkWell(onTap:(){Get.offAll(VoucherPromo());},child: Text('Skip',style: TextStyle(color: greencolor,fontSize: 20.sp),))
+                    InkWell(onTap:(){Get.to(nav());},child: Text('Skip',style: TextStyle(color: greencolor,fontSize: 20.sp),))
 
 
                   ],

@@ -1,28 +1,17 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:foodninja/Constants/Constants.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart' as http;
-
 import '../../../api/menuwithfilter/menuwithfilter.dart';
 import '../../../model/menu/menumodel.dart';
-import '../../Chat/Chat.dart';
-import '../../profile/profileinfo.dart';
-import '../../shoppingcart/FinishOrder.dart';
-import '../Homme/Home.dart';
 class Exploremenuwithfiltercontroller extends GetxController {
   menuwithfilter menu = menuwithfilter();
   List products = [].obs;
+  List cartlist = <menumodel>[].obs;
+  var productsMap={}.obs;
+  var count=1.obs;
+  final MyCart='Cart';
+  var searchlist=<menumodel>[].obs;
   var favorites=<menumodel>[].obs;
-  List searchlist=<menumodel>[].obs;
-  var showGrid = false.obs;
   var box=GetStorage();
-  toggleGrid() {
-    showGrid(!showGrid.value);
-  }
-
   @override
   void onInit(){
     List? store = box.read<List>('favoritelist');
@@ -52,17 +41,38 @@ class Exploremenuwithfiltercontroller extends GetxController {
     products = await menu.loadProductsFromApi();
     return products;
   }
-  addsearchlist(String searchname){
-    searchname=searchname.toLowerCase();
-    searchlist=products.where((search) {
-      var searchtitle=search.title?.toLowerCase();
-      return searchtitle!.contains(searchname);
-    }).toList();
-    update();
+  addtocart(menumodel item){
+    cartlist.add(item);
+  }
+  removecart(menumodel item){
+    cartlist.removeWhere((element) => element.id==item.id);
+  }
+  clearcart(){
+    cartlist.clear();
+  }
+  double get totalprice {
+    return cartlist.fold(0, (sum, item) => sum+item.price);
+  }
+  int get countitem{
+    return cartlist.length;
+  }
+  ShippingFee(){
+    int value=10;
+    return  cartlist.length==0?0:value;
+  }
+  Discount(){
+    return  cartlist.length==0?0:totalprice*0.2;
+  }
+  total(){
+    return totalprice+ShippingFee()+Discount();
+  }
+  // void increment(){
+  //   if(count>=1 && count<20)
+  //     count.value++;
+  // }
+  // void decrement(){
+  //   if(count>1)
+  //     count.value--;
+  // }
+  }
 
-  }
-  clearsearch(){
-    menuControllerr.clear();
-    addsearchlist('');
-  }
-}

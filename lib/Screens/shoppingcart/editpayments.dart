@@ -5,6 +5,8 @@ import 'package:foodninja/Constants/Constants.dart';
 import 'package:foodninja/components/appbar/appbar.dart';
 import 'package:get/get.dart';
 
+import 'editLocation.dart';
+
 
 class editpayments extends StatelessWidget {
   const editpayments({Key? key}) : super(key: key);
@@ -142,12 +144,27 @@ class editpayments extends StatelessWidget {
 
 
 
+
                         ],
                       ),
                     ),
                   ),
                 ],
 
+              ),
+              SizedBox(height: 10.h,),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 40.w),
+                child: MaterialButton(
+                  onPressed:(){Get.offAll(editLocation());},
+                  child: Text('Next',
+                    style: TextStyle(color: Colors.white,
+                      fontSize: 15.sp,),),),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: greencolor,
+                ),
               ),
 
 

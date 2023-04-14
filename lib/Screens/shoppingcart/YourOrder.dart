@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:foodninja/Constants/Constants.dart';
 import 'package:foodninja/Screens/shoppingcart/SetLocationOnMap.dart';
+import 'package:foodninja/Screens/shoppingcart/payment.dart';
 import 'package:foodninja/components/appbar/appbar.dart';
 import 'package:get/get.dart';
 
@@ -289,7 +290,7 @@ class YourOrder extends StatelessWidget {
                             width: double.infinity,
                             margin: EdgeInsets.symmetric(horizontal: 40.w),
                             child: MaterialButton(
-                              onPressed:(){Get.offAll(SetLocationOnMap());},
+                              onPressed:(){Get.offAll(payment());},
                               child: Text('Check out',
                                 style: TextStyle(color: greencolor,
                                   fontSize: 15.sp,),),),

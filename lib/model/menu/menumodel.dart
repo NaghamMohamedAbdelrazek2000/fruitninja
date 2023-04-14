@@ -1,12 +1,11 @@
 class menumodel {
-  int? id;
+ int? id;
   String? title;
   double? price;
   String? description;
   String? image;
   String? category;
   Rating? rating;
-
   menumodel(
       {this.id,
         this.title,
@@ -14,7 +13,8 @@ class menumodel {
         this.description,
         this.image,
         this.category,
-        this.rating, });
+        this.rating,
+      });
 
   menumodel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

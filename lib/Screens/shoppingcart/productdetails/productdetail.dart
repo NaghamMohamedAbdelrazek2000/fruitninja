@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodninja/Constants/Constants.dart';
@@ -18,29 +17,6 @@ class productdetail extends StatelessWidget {
       appBar: CustomAppBar(onpressed: (){
         Get.back();
       },),
-      // floatingActionButton: Badge(
-      //     showBadge: true,
-      //     position: BadgePosition.topEnd(top: -10, end: 1),
-      //     badgeAnimation: BadgeAnimation.rotation(
-      //       animationDuration: Duration(milliseconds: 200),
-      //       loopAnimation: false,
-      //       curve: Curves.fastOutSlowIn,
-      //       colorChangeAnimationCurve: Curves.easeInCubic,
-      //     ),
-      //     badgeStyle: BadgeStyle(
-      //       shape:BadgeShape.square,
-      //       badgeColor: Colors.deepOrange,
-      //     ),
-      //   badgeContent: Text('0',
-      //     style: const TextStyle(color: Colors.white),
-      //   ),
-      //     child: FloatingActionButton(
-      //       backgroundColor: Colors.orangeAccent,
-      //       onPressed: (){},
-      //       child: Icon(Icons.shopping_cart),
-      //
-      //     ),
-      //   ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -78,29 +54,6 @@ class productdetail extends StatelessWidget {
                               child: Text(
                                 'Popular',
                                 style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: (){
-
-                            },
-                            child: Container(
-                              height: 30.h,
-                              width: 130.w,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.greenAccent,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Add To Cart',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  Icon(Icons.shopping_cart, color:Colors.white ,),
-                                ],
                               ),
                             ),
                           ),

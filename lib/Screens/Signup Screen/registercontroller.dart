@@ -4,24 +4,23 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../Sharedpreference/Sharedpreference.dart';
 import '../BottomNavigationBar/BottomNavigationBar.dart';
-import '../LoginScreen/LoginScreen.dart';
+import '../Signupprofile/Signupprofile.dart';
 class registercontroller extends GetxController{
   Future signup( String? email,String? password, String? name)async {
     try {
       final response = await http.post(
-          Uri.parse('http://178.128.138.57/api/auth/register/user?name=NaghamAbdelrazek&email=hossam2000@gmail.com&password=123456789&mobile=01120747447')
-          , //string is not asubtype of URI
-          // body: {
-          //   'email': email,
-          //   'password': password,
-          //   'name' : name,
-          // }
+        Uri.parse('https://reqres.in/api/register'),
+          body: {
+            'email' : email,
+            'password' : password
+          }
       );
+      print(response.statusCode);
       if (response.statusCode== 200) {
-         var data=jsonDecode(response.body.toString());
-         print(data);
-         print(data['token']);
-        await CacheHelper.saveDataToSharedPrefrence('token', data['token']).then((value) => Get.offAll(LoginScreen()));
+        var data=jsonDecode(response.body.toString());
+        print(data);
+        print(data['token']);
+        await CacheHelper.saveDataToSharedPrefrence('token', data['token']).then((value) => Get.offAll(nav()));
         print('Created Account successfully');
       }
       else {

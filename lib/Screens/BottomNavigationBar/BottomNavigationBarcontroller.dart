@@ -7,6 +7,9 @@ import 'package:foodninja/Screens/profile/profileinfo.dart';
 import 'package:foodninja/Screens/shoppingcart/FinishOrder.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
+import '../Chat/chatsupport tawk.dart';
+import '../shoppingcart/cart order/orderdetails.dart';
+
 class navcontroller extends GetxController{
   var currentIndex = 0;
   final items = [
@@ -18,8 +21,8 @@ class navcontroller extends GetxController{
   List screens = [
     Home(),
     profileinfo(),
-    FinishOrder(),
-    Chat(),
+    orderdetails(),
+    chatScreen(),
 
 
   ];

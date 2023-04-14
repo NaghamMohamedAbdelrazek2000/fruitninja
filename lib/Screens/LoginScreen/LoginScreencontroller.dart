@@ -6,24 +6,22 @@ import 'package:foodninja/services/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../Sharedpreference/Sharedpreference.dart';
-import '../BottomNavigationBar/BottomNavigationBar.dart';
+import '../Home/upload2/uploadphoto.dart';
 class LoginController extends GetxController{
   Services services= Services();
   Future login( String? email,String? password)async {
     try {
       final response = await http.post(
-          Uri.parse('http://178.128.138.57/api/auth/login?password=123456789&email=naghamafifi2000@gmail.com')
-          , //string is not asubtype of URI
-          // body: {
-          //   'email': email,
-          //   'password': password,
-          // }
+          Uri.parse('https://reqres.in/api/login'),
+          body: {
+      'email' : email,
+      'password' : password
+      }
       );
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(data['token']);
-        await CacheHelper.saveDataToSharedPrefrence('token', data['token']) .then((value) => Get.offAll(nav()));;
-
+        await CacheHelper.saveDataToSharedPrefrence('token', data['token']) .then((value) => Get.offAll(uploadphoto2()));
         print('Login successfully');
 
       }
@@ -31,7 +29,7 @@ class LoginController extends GetxController{
         print('Failed');
         Get.back();
       }
-    } catch (e) {
+    } catch (e){
       print(e.toString());
     }
   }
@@ -45,7 +43,7 @@ class LoginController extends GetxController{
     final res=await services.auth.signInWithCredential(authcredential);
      User? user= res.user;
 print('user email=${user?.email}');
-    await CacheHelper.saveDataToSharedPrefrence("token", user!.uid).then((value) => Get.offAll(nav()));
+    await CacheHelper.saveDataToSharedPrefrence("token", user!.uid).then((value) => Get.offAll(uploadphoto2()));
   }
   Future signoutwithgoogle()async{
     await services.googleSignin.signOut().then((value) async=> await CacheHelper.removeData(key: 'token')).then((value) async=>  await CacheHelper.clearData()).then((value) => Get.offAll(LoginScreen()));
@@ -62,7 +60,7 @@ print('user email=${user?.email}');
     final res=await services.auth.signInWithCredential(facebookAuthCredential);
     User? user= res.user;
     print('user email=${user?.email}');
-    await CacheHelper.saveDataToSharedPrefrence("token", user!.uid).then((value) => Get.offAll(nav()));
+    await CacheHelper.saveDataToSharedPrefrence("token", user!.uid).then((value) => Get.offAll(uploadphoto2()));
   }
   Future  signoutwithfacebbok()async{
     await services.facebookSignin.logOut().then((value) async=> await CacheHelper.removeData(key: 'token')).then((value) async=>  await CacheHelper.clearData()).then((value) => Get.offAll(LoginScreen()));;

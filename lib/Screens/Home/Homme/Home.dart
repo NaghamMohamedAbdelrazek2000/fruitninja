@@ -6,14 +6,14 @@ import 'package:foodninja/Screens/Home/filter.dart';
 import 'package:foodninja/Screens/Home/nearestrestaurant.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
+import '../../shoppingcart/Notification.dart';
+import '../../shoppingcart/cart order/orderdetails.dart';
 import '../../shoppingcart/productdetails/productdetail.dart';
 import '../../shoppingcart/restaurantdetails.dart';
 import '../Exploremenuwithfilter/Exploremenuwithfilter.dart';
 import '../Exploremenuwithfilter/ExploremenuwithfilterController.dart';
 import '../explorerestaurantwithfilter/Explore Restaurant with filter.dart';
 import '../explorerestaurantwithfilter/ExploreRestaurantwithfiltercontroller.dart';
-
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
   Exploremenuwithfiltercontroller menucontroller =Get.put(Exploremenuwithfiltercontroller());
@@ -42,7 +42,7 @@ class Home extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30),
                               color: Colors.white,
                             ),
-                            child: IconButton(onPressed: (){}, icon: Icon(Icons.notifications_none_rounded, color: greencolor,size: 30.sp,))),
+                            child: IconButton(onPressed: (){Get.to(notification());}, icon: Icon(Icons.notifications_none_rounded, color: greencolor,size: 30.sp,))),
                       ],
                     )
                   ],
@@ -55,14 +55,14 @@ class Home extends StatelessWidget {
                       Flexible(
                         child: TextField(
                           controller:HomeControllerr,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          hintText: 'What do you want to order?',
-                          prefixIcon: Icon(Icons.search, color: Colors.orangeAccent,),
-                          suffixIcon: IconButton( onPressed: () { HomeControllerr.clear();}, icon: Icon(Icons.clear,color: Colors.orangeAccent,),)
-                        ),),
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              hintText: 'What do you want to order?',
+                              prefixIcon: Icon(Icons.search, color: Colors.orangeAccent,),
+                              suffixIcon: IconButton( onPressed: () { }, icon: Icon(Icons.clear,color: Colors.orangeAccent,),)
+                          ),),
                       ),
                       SizedBox(width: 5.w,),
                       Container(
@@ -140,7 +140,7 @@ class Home extends StatelessWidget {
                     child: Row(
                       children: [
                         Text('Popular Menu', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.sp),),
-                        SizedBox(width:100.w,),
+                        SizedBox(width: 100.w,),
                         MaterialButton(
                           onPressed:(){Get.to(Exploremenuwithfilter());},
                           child: Text('View More',
@@ -152,9 +152,11 @@ class Home extends StatelessWidget {
                 ),
                 Container(
                   transform: Matrix4.translationValues(0.0, -30.0, 0.0),
-                  child: FutureBuilder(  future: menucontroller.loadProductsFrommenu(),
+                  child: FutureBuilder(
+                      future:menucontroller.loadProductsFrommenu(),
                       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                         if (snapshot.hasData) {
+
                           return Container(
                             height: 500.h,
                             child: ListView.builder(
@@ -164,7 +166,7 @@ class Home extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return InkWell(
                                     onTap: (){
-                                      Get.to(()=>productdetail( MenuModel: menucontroller.products[index]));
+                                      Get.to(()=>productdetail(MenuModel:menucontroller.products[index],));
                                     },
                                     child: Card(
                                       elevation: 0.0,
@@ -195,17 +197,24 @@ class Home extends StatelessWidget {
                                                   child: Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
-                                                      Obx(() =>    Container(
-                                                        transform: Matrix4.translationValues(0.0, -2.0, 0.0),
-                                                        alignment: Alignment.centerLeft,
-                                                        child: IconButton(
-                                                          onPressed: (){ menucontroller.managefavorites(menucontroller.products[index].id);},
-                                                          icon:  menucontroller.isfavorites(menucontroller.products[index].id)?Icon(
-                                                            Icons.favorite,color: Colors.red,
-                                                          ):Icon(
-                                                            Icons.favorite_outline_outlined,color: blackcolor,
+                                                      Obx(() =>  Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Container(
+                                                            transform: Matrix4.translationValues(0.0, -2.0, 0.0),
+                                                            alignment: Alignment.centerLeft,
+                                                            child: IconButton(
+                                                              onPressed: (){ menucontroller.managefavorites(menucontroller.products[index].id);},
+                                                              icon:  menucontroller.isfavorites(menucontroller.products[index].id)?Icon(
+                                                                Icons.favorite,color: Colors.red,
+                                                              ):Icon(
+                                                                Icons.favorite_outline_outlined,color: blackcolor,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
+                                                          menucontroller.cartlist.contains(menucontroller.products[index])?IconButton(onPressed: (){menucontroller.removecart(menucontroller.products[index]);}, icon: Icon(Icons.remove_shopping_cart, color: greencolor,)): IconButton(onPressed: (){menucontroller.addtocart(menucontroller.products[index]);}, icon: Icon(Icons.add_shopping_cart, color: greencolor,)),
+
+                                                        ],
                                                       ),),
 
                                                       Container(
@@ -260,9 +269,12 @@ class Home extends StatelessWidget {
                                     ),
                                   );
                                 }),
-                          );}
+                          );
 
-                        else{return Center(child: CircularProgressIndicator(color: greencolor));}}),
+
+                        }
+                        else{return Center(child: CircularProgressIndicator(color: greencolor,));
+                        }}),
                 ),
                 SizedBox(height: 20.h,),
                 Container(

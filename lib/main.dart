@@ -1,9 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foodninja/Screens/SplashScreen/SplashScreen.dart';
+import 'package:foodninja/test/counter%20list.dart';
+import 'package:foodninja/test/counter.dart';
+import 'package:foodninja/test/testcount.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'Screens/BottomNavigationBar/BottomNavigationBar.dart';
-import 'Screens/Home/Exploremenuwithfilter/Exploremenuwithfilter.dart';
+import 'Screens/LoginScreen/LoginScreen.dart';
 import 'Screens/Signup Screen/Signup Screen.dart';
 import 'Sharedpreference/Sharedpreference.dart';
 void main() async{
@@ -19,13 +23,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
         builder: (BuildContext context, Widget? child) {
           return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SignupScreen(),
-        );});
+          home:SplashScreen());
+        });
 
   }
 }
