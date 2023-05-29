@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../Constants/Constants.dart';
 import 'Exploremenuwithfilter/ExploremenuwithfilterController.dart';
+import 'explorerestaurantwithfilter/ExploreRestaurantwithfiltercontroller.dart';
 
 class nearestrestaurant extends StatelessWidget {
   const nearestrestaurant({
@@ -14,11 +15,11 @@ class nearestrestaurant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Exploremenuwithfiltercontroller menucontroller =Get.put(Exploremenuwithfiltercontroller());
+    ExploreRestaurantwithfiltercontroller restaurantcontroller =Get.put(ExploreRestaurantwithfiltercontroller());
     return  Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        FutureBuilder(  future: menucontroller.loadProductsFrommenu(),
+        FutureBuilder(  future: restaurantcontroller.loadProductsFromrestaurant(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.hasData) {
                return Container(
@@ -34,7 +35,7 @@ class nearestrestaurant extends StatelessWidget {
                      mainAxisSpacing: 20,
                      crossAxisCount: 1,
                    ),
-                   itemCount: menucontroller.products.length,
+                   itemCount: restaurantcontroller.products.length,
                    itemBuilder: (BuildContext context, int index) {
                      return Container(
                        height: 70.h,
@@ -48,7 +49,7 @@ class nearestrestaurant extends StatelessWidget {
                              decoration: BoxDecoration(
                                image: DecorationImage(
                                  image: NetworkImage(
-                                     menucontroller.products[index].image.toString()),
+                                     restaurantcontroller.products[index].pic.toString()),
                                  fit: BoxFit.fill,
                                ),
                              ),
@@ -62,7 +63,7 @@ class nearestrestaurant extends StatelessWidget {
                                  CrossAxisAlignment.start,
                                  children: [
                                    Text(
-                                     menucontroller.products[index].title.toString(),
+                                     restaurantcontroller.products[index].name.toString(),
                                      style: TextStyle(
                                        fontWeight: FontWeight.bold,
                                      ),
@@ -71,7 +72,21 @@ class nearestrestaurant extends StatelessWidget {
                                    ),
                                    SizedBox(height: 5.h,),
                                    Text(
-                                     "\$${menucontroller.products[index].price.toString()}",
+                                     "${restaurantcontroller.products[index].deliveryTime.toString()}",
+                                     style: TextStyle(
+                                       fontWeight: FontWeight.bold,
+                                     ),
+                                   ),
+                                   SizedBox(height: 5.h,),
+                                   Text(
+                                     "${restaurantcontroller.products[index].lat.toString()}",
+                                     style: TextStyle(
+                                       fontWeight: FontWeight.bold,
+                                     ),
+                                   ),
+                                   SizedBox(height: 5.h,),
+                                   Text(
+                                     "${restaurantcontroller.products[index].long.toString()}",
                                      style: TextStyle(
                                        fontWeight: FontWeight.bold,
                                      ),

@@ -68,15 +68,23 @@ class orderdetails extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Container(
-                                        child: Image.network(
-                                            cartcontroller.cartlist[index].image.toString()),),
+                                        height: 100.h,
+                                        width: 80.w,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                                '${cartcontroller.cartlist[index].pic}'),
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      ),
                                       SizedBox(width: 20.w,),
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           SizedBox(
                                             width:150.w,
-                                            child: Text('${cartcontroller.cartlist[index].title.toString()}', style: TextStyle(
+                                            child: Text('${cartcontroller.cartlist[index].name.toString()}', style: TextStyle(
                                               fontWeight: FontWeight.bold, color: blackcolor,
                                             ), maxLines: 2,
                                               overflow: TextOverflow.ellipsis,),
@@ -95,53 +103,7 @@ class orderdetails extends StatelessWidget {
                                           ),),
                                         ],
                                       ),
-                                     //  Stack(
-                                     //   children: [
-                                     //     Container(
-                                     //       alignment: Alignment.center,
-                                     //       height: 35.h,
-                                     //       width: 50.w,
-                                     //       decoration: BoxDecoration(
-                                     //         shape: BoxShape.circle,
-                                     //         color: Colors.grey,
-                                     //       ),
-                                     //       child: Container(
-                                     //         transform: Matrix4.translationValues(0.0, -10.0, 0.0),
-                                     //         alignment: Alignment.center,
-                                     //         child: IconButton(
-                                     //           onPressed: (){cartcontroller.decrement();},
-                                     //           icon: Icon(
-                                     //             Icons.minimize_rounded,
-                                     //             color: greencolor,
-                                     //             size: 25.sp,
-                                     //
-                                     //           ),
-                                     //         ),
-                                     //       ),),
-                                     //   ],
-                                     // ),
-                                     //  Obx(() => Text('${cartcontroller.count}', style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),),),
-                                     //  Stack(
-                                     //    children: [
-                                     //      Container(
-                                     //        alignment: Alignment.center,
-                                     //        height: 35.h,
-                                     //        width: 50.w,
-                                     //        decoration: BoxDecoration(
-                                     //          shape: BoxShape.circle,
-                                     //          color: greencolor,
-                                     //        ),
-                                     //        child: IconButton(
-                                     //          onPressed: (){cartcontroller.increment();},
-                                     //          icon: Icon(
-                                     //            Icons.add,
-                                     //            color: Colors.white,
-                                     //            size: 22.sp,
-                                     //
-                                     //          ),
-                                     //        ),),
-                                     //    ],
-                                     //  ),
+
                                     ],
                                   ),
                                 ),

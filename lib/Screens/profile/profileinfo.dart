@@ -176,8 +176,8 @@ class profileinfo extends StatelessWidget {
                                    height: 80.h,
                                    width: double.infinity,
                                    decoration: BoxDecoration(
-                                     borderRadius: BorderRadius.circular(30),
-                                     color: Colors.white
+                                     borderRadius: BorderRadius.circular(10),
+                                     color: Colors.grey
                                    ),
                                    child: Row(
                                      children: [
@@ -187,7 +187,7 @@ class profileinfo extends StatelessWidget {
                                          decoration: BoxDecoration(
                                            image: DecorationImage(
                                              image: NetworkImage(
-                                                 menuu.favorites[index].image.toString()),
+                                                 menuu.favorites[index].pic.toString()),
                                              fit: BoxFit.fill,
                                            ),
                                          ),
@@ -200,20 +200,15 @@ class profileinfo extends StatelessWidget {
                                          EdgeInsets.only(top: 15, right: 25, left: 10),
                                          child: Column(
                                            children: [
-                                             Container(
-                                               width:200.w,
-                                               child: Text(
-                                                 menuu.favorites[index].title.toString(),
-                                                 style: TextStyle(
-                                                   fontWeight: FontWeight.bold,
-                                                 ),
-                                                 maxLines: 1,
-                                                 overflow: TextOverflow.ellipsis,
+                                             Text(
+                                               menuu.favorites[index].name.toString(),
+                                               style: TextStyle(
+                                                 fontWeight: FontWeight.bold,
                                                ),
+                                               maxLines: 1,
+                                               overflow: TextOverflow.ellipsis,
                                              ),
-                                             SizedBox(
-                                               height: 10.h,
-                                             ),
+                                             SizedBox(height: 5.h,),
                                              Text(
                                                '\$ ${menuu.favorites[index].price.toString()}',
                                                style: TextStyle(
@@ -224,6 +219,8 @@ class profileinfo extends StatelessWidget {
                                            ],
                                          ),
                                        ),
+
+
                                      ],
                                    ),
                                  ),

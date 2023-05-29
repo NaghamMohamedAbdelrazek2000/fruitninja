@@ -25,7 +25,7 @@ class productdetail extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               background: Positioned.fill(
                   child: Image(
-                    image: NetworkImage(MenuModel.image.toString()),
+                    image: NetworkImage(MenuModel.pic.toString()),
                     fit: BoxFit.fill,
                   )),
             ),
@@ -63,7 +63,7 @@ class productdetail extends StatelessWidget {
                         height: 10.h,
                       ),
                       Text(
-                        MenuModel.title.toString(),
+                        MenuModel.name.toString(),
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25.sp),
@@ -71,17 +71,7 @@ class productdetail extends StatelessWidget {
                       SizedBox(
                         height: 5.h,
                       ),
-                    Row(children: [
-                      Icon(Icons.location_on,color: greencolor,),
-                      SizedBox(width: 5.w,),
-                      Text('19 Km', style: TextStyle(color: Colors.grey),),
-                      SizedBox(width: 20.w,),
-                      Icon(Icons.star_half_outlined,color: greencolor,),
-                      SizedBox(width: 5.w,),
-                      Text('${MenuModel.rating?.rate}', style: TextStyle(color: Colors.grey),),
-                      SizedBox(width: 10.w,),
-                      Text('\$${MenuModel.price}',style: TextStyle(color: greencolor, fontWeight: FontWeight.bold),)
-                    ],),
+                    Text('\$${MenuModel.price}',style: TextStyle(color: greencolor, fontWeight: FontWeight.bold),),
                       SizedBox(
                         height: 5.h,
                       ),
@@ -90,6 +80,7 @@ class productdetail extends StatelessWidget {
                         child: Text(
                           '${MenuModel.description}',
                           maxLines: 4,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       SizedBox(
@@ -142,7 +133,7 @@ class productdetail extends StatelessWidget {
       decoration: BoxDecoration(
       image: DecorationImage(
       image: NetworkImage(
-      menucontroller.products[index].image.toString()),
+      menucontroller.products[index].pic.toString()),
       fit: BoxFit.fill,
       ),
       ),
@@ -156,7 +147,7 @@ class productdetail extends StatelessWidget {
       CrossAxisAlignment.start,
       children: [
       Text(
-      menucontroller.products[index].title.toString(),
+      menucontroller.products[index].name.toString(),
       style: TextStyle(
       fontWeight: FontWeight.bold,
       ),

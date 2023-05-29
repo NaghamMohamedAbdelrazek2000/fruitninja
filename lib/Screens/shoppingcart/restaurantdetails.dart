@@ -6,15 +6,16 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../components/appbar/appbar.dart';
+import '../../model/Restaurant.dart';
 import '../Home/Exploremenuwithfilter/Exploremenuwithfilter.dart';
 import '../Home/Exploremenuwithfilter/ExploremenuwithfilterController.dart';
 import '../Home/explorerestaurantwithfilter/Explore Restaurant with filter.dart';
 import '../Home/explorerestaurantwithfilter/ExploreRestaurantwithfiltercontroller.dart';
 import 'cart order/orderdetails.dart';
 class restaurantdetails extends StatelessWidget {
-  restaurantdetails({Key? key, required this.Menumodel2}) : super(key: key);
+  restaurantdetails({Key? key, required this.Restaurant2}) : super(key: key);
   ExploreRestaurantwithfiltercontroller restaurantcontroller =Get.put(ExploreRestaurantwithfiltercontroller());
- final menumodel Menumodel2;
+ final Restaurant Restaurant2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +31,7 @@ class restaurantdetails extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               background: Positioned.fill(
                   child: Image(
-                    image: NetworkImage(Menumodel2.image.toString()),
+                    image: NetworkImage(Restaurant2.pic.toString()),
                     fit: BoxFit.fill,
                   )),
             ),
@@ -68,7 +69,7 @@ class restaurantdetails extends StatelessWidget {
                         height: 10.h,
                       ),
                       Text(
-                        Menumodel2.title.toString(),
+                        Restaurant2.name.toString(),
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25.sp),
@@ -80,19 +81,17 @@ class restaurantdetails extends StatelessWidget {
                         children: [
                         Icon(Icons.location_on,color: greencolor,),
                         SizedBox(width: 5.w,),
-                        Text('19 Km', style: TextStyle(color: Colors.grey),),
-                        SizedBox(width: 180.w,),
-                        Icon(Icons.star_half_outlined,color: greencolor,),
-                        SizedBox(width: 5.w,),
-                        Text('${Menumodel2.rating?.rate}', style: TextStyle(color: Colors.grey),),
+                        Text(Restaurant2.lat.toString(), style: TextStyle(color: Colors.grey),),
+                        SizedBox(width: 20.w,),
+                          Text(Restaurant2.long.toString(), style: TextStyle(color: Colors.grey),),
                       ],),
                       SizedBox(
                         height: 5.h,
                       ),
                       Container(
                         width: 300.w,
-                        child: Text(
-                          Menumodel2.description.toString(),
+                        child: Text('Delivery-Time : ${ Restaurant2.deliveryTime.toString()}'
+                         ,
                           maxLines: 4,
                         ),
                       ),
@@ -146,7 +145,7 @@ class restaurantdetails extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 image: DecorationImage(
                                                   image: NetworkImage(
-                                                      restaurantcontroller.products[index].image.toString()),
+                                                      restaurantcontroller.products[index].pic.toString()),
                                                   fit: BoxFit.fill,
                                                 ),
                                               ),
@@ -160,7 +159,7 @@ class restaurantdetails extends StatelessWidget {
                                                   CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      restaurantcontroller.products[index].title.toString(),
+                                                      restaurantcontroller.products[index].name.toString(),
                                                       style: TextStyle(
                                                         fontWeight: FontWeight.bold,
                                                       ),
@@ -168,8 +167,8 @@ class restaurantdetails extends StatelessWidget {
                                                       overflow: TextOverflow.ellipsis,
                                                     ),
                                                     SizedBox(height: 5.h,),
-                                                    Text(
-                                                      "\$${restaurantcontroller.products[index].price.toString()}",
+                                                    Text('Delivery-Time : ${restaurantcontroller.products[index].deliveryTime.toString()}'
+                                                      ,
                                                       style: TextStyle(
                                                         fontWeight: FontWeight.bold,
                                                       ),

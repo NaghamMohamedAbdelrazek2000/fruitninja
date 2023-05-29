@@ -1,14 +1,10 @@
+
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foodninja/Screens/SplashScreen/SplashScreen.dart';
-import 'package:foodninja/test/counter%20list.dart';
-import 'package:foodninja/test/counter.dart';
-import 'package:foodninja/test/testcount.dart';
+import 'package:foodninja/test/test%20food%20api/test%20api.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'Screens/BottomNavigationBar/BottomNavigationBar.dart';
-import 'Screens/LoginScreen/LoginScreen.dart';
-import 'Screens/Signup Screen/Signup Screen.dart';
 import 'Sharedpreference/Sharedpreference.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +22,7 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, Widget? child) {
           return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home:SplashScreen());
+          home:nav());
         });
 
   }

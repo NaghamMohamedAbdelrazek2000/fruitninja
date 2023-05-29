@@ -12,12 +12,13 @@ class LoginController extends GetxController{
   Future login( String? email,String? password)async {
     try {
       final response = await http.post(
-          Uri.parse('https://reqres.in/api/login'),
-          body: {
-      'email' : email,
-      'password' : password
-      }
+          Uri.parse('http://206.189.103.8/api/auth/login'),
+body:{
+            'email':email,
+  'password':password,
+}
       );
+      print(response.statusCode);
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
         print(data['token']);

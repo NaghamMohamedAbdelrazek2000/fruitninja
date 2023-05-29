@@ -3,13 +3,14 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../../Constants/Constants.dart';
 import '../../../api/restaurantwithfilter/restaurantwithfilter.dart';
+import '../../../model/Restaurant.dart';
 import '../../../model/menu/menumodel.dart';
 
 
 class ExploreRestaurantwithfiltercontroller extends GetxController{
   Restaurantwithfilter restaurant =Restaurantwithfilter();
   List products = [].obs ;
-  List searchlist=<menumodel>[].obs;
+  List searchlist=<Restaurant>[].obs;
   var showGrid = false.obs;
   @override
   void onInit(){

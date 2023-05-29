@@ -4,15 +4,16 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../Sharedpreference/Sharedpreference.dart';
 import '../BottomNavigationBar/BottomNavigationBar.dart';
+import '../LoginScreen/LoginScreen.dart';
 import '../Signupprofile/Signupprofile.dart';
 class registercontroller extends GetxController{
   Future signup( String? email,String? password, String? name)async {
     try {
       final response = await http.post(
-        Uri.parse('https://reqres.in/api/register'),
-          body: {
-            'email' : email,
-            'password' : password
+        Uri.parse('http://206.189.103.8/api/auth/register/user?name=Nagham&email=nagham80@gmail.com&password=123456789&mobile=01120747447'),
+          body:{
+            'email':email,
+            'password':password,
           }
       );
       print(response.statusCode);
@@ -20,8 +21,10 @@ class registercontroller extends GetxController{
         var data=jsonDecode(response.body.toString());
         print(data);
         print(data['token']);
-        await CacheHelper.saveDataToSharedPrefrence('token', data['token']).then((value) => Get.offAll(nav()));
+        await CacheHelper.saveDataToSharedPrefrence('token', data['token']).then((value) => Get.offAll(LoginScreen()));
         print('Created Account successfully');
+
+
       }
       else {
         print('Failed');

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodninja/Constants/Constants.dart';
 import 'package:foodninja/components/appbar/appbar.dart';
 import 'package:get/get.dart';
+import '../../../model/Restaurant.dart';
 import '../../../model/menu/menumodel.dart';
 import '../../shoppingcart/Notification.dart';
 import '../../shoppingcart/restaurantdetails.dart';
@@ -10,7 +11,7 @@ import 'ExploreRestaurantwithfiltercontroller.dart';
 class ExploreRestaurantwithfilter extends StatelessWidget {
 ExploreRestaurantwithfilter({Key? key}) : super(key: key);
 ExploreRestaurantwithfiltercontroller restaurantcontroller =Get.put(ExploreRestaurantwithfiltercontroller());
-menumodel menu2=menumodel();
+Restaurant  restaurant= Restaurant();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +79,7 @@ menumodel menu2=menumodel();
                               itemBuilder: (context, index) {
                                 return InkWell(
                                   onTap: (){
-                                    Get.to(()=>restaurantdetails(Menumodel2:restaurantcontroller.products[index],));
+                                    Get.to(()=>restaurantdetails(Restaurant2: restaurantcontroller.products[index],));
                                   },
                                   child: Card(
                                     elevation: 0.0,
@@ -95,63 +96,57 @@ menumodel menu2=menumodel();
                                             decoration: BoxDecoration(
                                               image: DecorationImage(
                                                 image: NetworkImage(
-                                                    restaurantcontroller.products[index].image.toString()),
+                                                    restaurantcontroller.products[index].pic.toString()),
                                                 fit: BoxFit.fill,
                                               ),
                                             ),
                                           ),
                                           Expanded(
                                             flex: 2,
-                                            child: Container(
-                                              transform: Matrix4.translationValues(0.0, -1.0, 0.0),
-                                              child: Padding(
-                                                padding:  EdgeInsets.only(bottom: 8.0, left: 15, right: 15,),
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      width:200.w,
-                                                      child: Text(
-                                                        restaurantcontroller.products[index].title.toString(),
+                                            child: Padding(
+                                              padding:  EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    width:200.w,
+                                                    child: Text(
+                                                      restaurantcontroller.products[index].name.toString(),
+                                                      style: TextStyle(
+                                                        fontWeight: FontWeight.bold,
+                                                      ),
+                                                      maxLines: 1,
+                                                      overflow: TextOverflow.ellipsis,
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 5.h,),
+                                                  Text('Delivery-Time : ${restaurantcontroller.products[index].deliveryTime.toString()}'
+                                                    ,
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 5.h,),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        "${restaurantcontroller.products[index].lat.toString()}",
                                                         style: TextStyle(
                                                           fontWeight: FontWeight.bold,
                                                         ),
-                                                        maxLines: 1,
-                                                        overflow: TextOverflow.ellipsis,
                                                       ),
-                                                    ),
-                                                    SizedBox(height: 5.h,),
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          "\$${restaurantcontroller.products[index].price.toString()}",
-                                                          style: TextStyle(
-                                                            fontWeight: FontWeight.bold,
-                                                          ),
+                                                      SizedBox(width: 20.h,),
+                                                      Text(
+                                                        "${restaurantcontroller.products[index].long.toString()}",
+                                                        style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
                                                         ),
-                                                        Container(
-                                                          height: 20.h,
-                                                          width: 45.w,
-                                                          decoration: BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(10),
-                                                              color: greencolor
-                                                          ),
-                                                          child: Row(
-                                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                            children: [
-                                                              Text(
-                                                                '${restaurantcontroller.products[index].rating.rate}',
-                                                                style: TextStyle(color: Colors.white),
-                                                              ),
-                                                              Icon(Icons.star, size: 13.sp,color:Colors.white ,)
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
+                                                      ),
+                                                    ],
+                                                  ),
+
+                                                ],
                                               ),
                                             ),
                                           )

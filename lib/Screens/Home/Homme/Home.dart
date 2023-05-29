@@ -183,7 +183,7 @@ class Home extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 image: DecorationImage(
                                                   image: NetworkImage(
-                                                      menucontroller.products[index].image.toString()),
+                                                      '${menucontroller.products[index].pic}'),
                                                   fit: BoxFit.fill,
                                                 ),
                                               ),
@@ -217,47 +217,49 @@ class Home extends StatelessWidget {
                                                         ],
                                                       ),),
 
-                                                      Container(
-                                                        width:200.w,
-                                                        child: Text(
-                                                          menucontroller.products[index].title.toString(),
-                                                          style: TextStyle(
-                                                            fontWeight: FontWeight.bold,
-                                                          ),
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow.ellipsis,
-                                                        ),
-                                                      ),
-                                                      SizedBox(height: 5.h,),
                                                       Row(
                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
+                                                          Text(
+                                                            menucontroller.products[index].name.toString(),
+                                                            style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                            ),),
                                                           Text(
                                                             "\$${menucontroller.products[index].price.toString()}",
                                                             style: TextStyle(
                                                               fontWeight: FontWeight.bold,
                                                             ),
                                                           ),
-                                                          Container(
-                                                            height: 20.h,
-                                                            width: 45.w,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius: BorderRadius.circular(10),
-                                                                color: greencolor
-                                                            ),
-                                                            child: Row(
-                                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                              children: [
-                                                                Text(
-                                                                  '${menucontroller.products[index].rating.rate}',
-                                                                  style: TextStyle(color: Colors.white),
-                                                                ),
-                                                                Icon(Icons.star, size: 13.sp,color:Colors.white ,)
-                                                              ],
-                                                            ),
-                                                          ),
                                                         ],
                                                       ),
+                                                      SizedBox(height: 5.h,),
+                                                      Text(
+                                                        menucontroller.products[index].description.toString(),
+                                                        style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
+                                                        ),
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow.ellipsis,
+                                                      ),
+                                                      // Container(
+                                                      //   width:600.w,
+                                                      //   child: Text(
+                                                      //     menucontroller.products[index].description.toString(),
+                                                      //     style: TextStyle(
+                                                      //       fontWeight: FontWeight.bold,
+                                                      //     ),
+                                                      //     maxLines: 6,
+                                                      //     overflow: TextOverflow.ellipsis,
+                                                      //   ),
+                                                      // ),
+                                                      SizedBox(height: 5.h,),
+                                                      // Text(
+                                                      //   "\$${menucontroller.products[index].price.toString()}",
+                                                      //   style: TextStyle(
+                                                      //     fontWeight: FontWeight.bold,
+                                                      //   ),
+                                                      // ),
                                                     ],
                                                   ),
                                                 ),
@@ -311,7 +313,7 @@ class Home extends StatelessWidget {
               itemBuilder: (context, index) {
                   return InkWell(
                     onTap: (){
-                      Get.to(()=>restaurantdetails(Menumodel2: restaurantcontroller.products[index],));
+                      Get.to(()=>restaurantdetails(Restaurant2: restaurantcontroller.products[index],));
                     },
                     child: Card(
                       elevation: 0.0,
@@ -328,7 +330,7 @@ class Home extends StatelessWidget {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      restaurantcontroller.products[index].image.toString()),
+                                      restaurantcontroller.products[index].pic.toString()),
                                   fit: BoxFit.fill,
                                 ),
                               ),
@@ -343,7 +345,7 @@ class Home extends StatelessWidget {
                                     Container(
                                       width:200.w,
                                       child: Text(
-                                        restaurantcontroller.products[index].title.toString(),
+                                        restaurantcontroller.products[index].name.toString(),
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -352,35 +354,32 @@ class Home extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(height: 5.h,),
+                                    Text('Delivery-Time : ${restaurantcontroller.products[index].deliveryTime.toString()}'
+                                      ,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(height: 5.h,),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          "\$${restaurantcontroller.products[index].price.toString()}",
+                                          "${restaurantcontroller.products[index].lat.toString()}",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        Container(
-                                          height: 20.h,
-                                          width: 45.w,
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(10),
-                                              color: greencolor
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Text(
-                                                '${restaurantcontroller.products[index].rating.rate}',
-                                                style: TextStyle(color: Colors.white),
-                                              ),
-                                              Icon(Icons.star, size: 13.sp,color:Colors.white ,)
-                                            ],
+                                        SizedBox(width: 20.h,),
+                                        Text(
+                                          "${restaurantcontroller.products[index].long.toString()}",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                       ],
                                     ),
+
                                   ],
                                 ),
                               ),

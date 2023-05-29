@@ -109,6 +109,7 @@ class SignupScreen extends StatelessWidget {
                   }
                   else{
                     print("not valid");
+
                   }
                 },
                   text: 'Register',),

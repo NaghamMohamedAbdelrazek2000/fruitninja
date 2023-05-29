@@ -1,16 +1,16 @@
-class menumodel {
-  menumodel({
-    this.id,
-    this.name,
-    this.description,
-    this.price,
-    this.restaurentId,
-    this.catId,
-    this.pic,
-    this.createdAt,
-    this.updatedAt,});
+class Food {
+  Food({
+      this.id,
+      this.name,
+      this.description,
+      this.price,
+      this.restaurentId,
+      this.catId,
+      this.pic,
+      this.createdAt,
+      this.updatedAt,});
 
-  menumodel.fromJson(dynamic json) {
+  Food.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];
