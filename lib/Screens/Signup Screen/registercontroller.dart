@@ -10,7 +10,7 @@ class registercontroller extends GetxController{
   Future signup( String? email,String? password, String? name)async {
     try {
       final response = await http.post(
-        Uri.parse('http://206.189.103.8/api/auth/register/user?name=Nagham&email=nagham80@gmail.com&password=123456789&mobile=01120747447'),
+        Uri.parse('http://206.189.103.8/api/auth/register/user?name=Nagham&email=nagham102@gmail.com&password=123456789&mobile=01120747447'),
           body:{
             'email':email,
             'password':password,
